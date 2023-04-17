@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 using namespace std;
 
 class User
@@ -14,5 +15,7 @@ private:
 	bool vaccinated;
 	int dose;
 
+public: 
+	void displayData();
 };
 
