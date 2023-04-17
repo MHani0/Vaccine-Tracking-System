@@ -7,7 +7,7 @@ void main(void) {
 	int choice;
 	cout << "\n\t\t\t\t*Welcome to The Egyptian Vaccine Tracking System*\n";
 	cout << "\nPlease choose from the following options:\n";
-	cout << "\n1. User Login\n\n2. Administrator Login\n\n3. Signup";
+	cout << "\n1. User Login\n\n2. Administrator Login\n\n3. Sign up";
 	cout << "\n\n> ";
 	cin >> choice;
 
