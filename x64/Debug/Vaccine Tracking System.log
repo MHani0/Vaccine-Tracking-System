@@ -1,3 +1,0 @@
-﻿  Main.cpp
-C:\Users\user\Desktop\Me\Study\2nd\DS\Vaccine-Tracking-System\Main.cpp(6,17): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Vaccine Tracking System.vcxproj -> C:\Users\user\Desktop\Me\Study\2nd\DS\Vaccine-Tracking-System\x64\Debug\Vaccine Tracking System.exe
