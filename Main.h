@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QtWidgets/QApplication>
+#include <qdebug.h>
 #include<iostream>
 #include <fstream>
 #include <unordered_map>
@@ -11,4 +13,4 @@
 
 //Main.cpp functions
 void save_data(unordered_map<string, User>&, string);
-void load_data(unordered_map<string, User>& , string);
+void load_data(unordered_map<string, User>&, string);

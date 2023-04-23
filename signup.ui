@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SignupClass</class>
+ <widget class="QMainWindow" name="SignupClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>960</width>
+    <height>570</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>960</width>
+    <height>570</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>960</width>
+    <height>570</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTextEdit" name="name">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>65</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="back">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>410</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Back</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="signup">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>410</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sign Up</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="natID">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>115</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="password">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>165</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="governorate">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>265</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="male">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>223</y>
+      <width>89</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Male</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">genderButtonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="female">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>223</y>
+      <width>89</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Female</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">genderButtonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="unvaccinated">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>323</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Unvaccinated</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">vaccineButtonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="vaccinated_1">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>343</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1 Dose</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">vaccineButtonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QRadioButton" name="vaccinated_2">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>363</y>
+      <width>90</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>2 Doses</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">vaccineButtonGroup</string>
+    </attribute>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>70</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Full Name:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>120</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>National ID:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>170</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Password:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>220</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Gender:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>270</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Governorate:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>320</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Vaccine Status:</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>960</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="genderButtonGroup"/>
+  <buttongroup name="vaccineButtonGroup"/>
+ </buttongroups>
+</ui>

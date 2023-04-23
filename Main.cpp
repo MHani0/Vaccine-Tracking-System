@@ -1,54 +1,45 @@
-#include "Main.h"
+#include "main.h"
+#include "Initial.h"
 
-using namespace std;
+int main(int argc, char *argv[])
+{
 
-void main(void) {
 
-	unordered_map < string, User> userHash;
-	string filename = "users.txt";
+    unordered_map < string, User> userHash;
+    string filename = "users.txt";
+
+    QApplication a(argc, argv);
 
 
 	load_data(userHash, filename);
 
 
-	
-	// //print values in hash for debugging
-	//for (auto & pair : userHash) {
-	//	cout << "ID: " << pair.first << ", Password: " << pair.second.password << ", Name: " << pair.second.name << ", Age: " << pair.second.age << ", Gender: " << pair.second.gender << ", Governorate: " << pair.second.governorate << ", Dose: " << pair.second.dose << std::endl;
-	//}
-	
 
-	// //decoy user for testing
-	//User user1("1111", "Bob", 40, "Male", "Alex", 0);
-	//userHash["3030260100659"] = user1;
-	
+	 /* //print values in hash for debugging
+	for (auto & pair : userHash) {
+		qDebug() << "ID: " << pair.first << ", Password: " << pair.second.password << ", Name: " << pair.second.name << ", Age: " << pair.second.age << ", Gender: " << pair.second.gender << ", Governorate: " << pair.second.governorate << ", Dose: " << pair.second.dose << "\n";
+	} */
 
-	int choice;
-	cout << "\n\t\t\t\t*Welcome to The Egyptian Vaccine Tracking System*\n";
-	cout << "\nPlease choose from the following options:\n";
-	cout << "\n1. User Login\n\n2. Administrator Login\n\n3. Sign up";
-	cout << "\n\n> ";
-	cin >> choice;
 
-	switch (choice) {
-	case 1:
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
-	default:
-		cout << "\n\nWrong Input..!\n\n";
-
-	}
+	/* //decoy user for testing
+	User user1("1111", "Bob", 40, "Male", "Alex", 0);
+	userHash["30303120100444"] = user1;
+	*/
 
 
 
-	
+    Initial inital;
+    inital.show();
+
+	//Qt Application main event loop
+    int exitCode = a.exec();
+
+
 	save_data(userHash, filename);
 
-}
 
+	return exitCode;
+}
 
 
 
@@ -76,7 +67,7 @@ void load_data(unordered_map<string, User>& userHash, string filename) {
 	string line;
 	string id, password, name, age, gender, governorate, dose;
 
-	while (infile >> id >> password >> name >> age >> gender  >> governorate >> dose) {
+	while (infile >> id >> password >> name >> age >> gender >> governorate >> dose) {
 		User user(password, name, stoi(age), gender, governorate, stoi(dose));
 		userHash[id] = user;
 	}

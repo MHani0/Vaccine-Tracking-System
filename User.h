@@ -18,7 +18,7 @@ public:
 	string governorate;
 	int dose;
 
-public: 
+public:
 	User(string, string, int, string, string, int);
 	User();
 	~User();

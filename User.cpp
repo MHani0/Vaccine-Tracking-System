@@ -1,6 +1,6 @@
 #include "User.h" 
 
-using namespace std; 
+using namespace std;
 
 
 User::User(string password, string name, int age, string gender, string governorate, int dose) {
@@ -20,6 +20,6 @@ User::~User() {
 
 }
 
-void User::displayData() { 
-	cout << "Full name: " << name << "\nAge: " << age << "\nGender: " << gender << "\ngovernorate" << "\nVaccine dose: " << dose; 
+void User::displayData() {
+	cout << "Full name: " << name << "\nAge: " << age << "\nGender: " << gender << "\ngovernorate" << "\nVaccine dose: " << dose;
 }
