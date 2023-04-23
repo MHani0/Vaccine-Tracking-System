@@ -1,21 +1,27 @@
 #pragma once
-#include <string>
+
 #include <iostream>
+
 using namespace std;
 
 class User
 {
-private:
-	string fullName;
-	int age;
-	string nationalId;
-	char gender;
-	string governorate;
+
+
+public:
+
 	string password;
-	bool vaccinated;
+	string name;
+	int age;
+	//string nationalId;
+	string gender;
+	string governorate;
 	int dose;
 
 public: 
+	User(string, string, int, string, string, int);
+	User();
+	~User();
 	void displayData();
 };
 
