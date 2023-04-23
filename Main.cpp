@@ -12,17 +12,16 @@ void main(void) {
 
 
 	
-	/* print values in hash for debugging
-	//print hash for any debugging
-	for (auto & pair : userHash) {
-		cout << "ID: " << pair.first << ", Password: " << pair.second.password << ", Name: " << pair.second.name << ", Age: " << pair.second.age << ", Gender: " << pair.second.gender << ", Governorate: " << pair.second.governorate << ", Dose: " << pair.second.dose << std::endl;
-	}
-	*/
+	// //print values in hash for debugging
+	//for (auto & pair : userHash) {
+	//	cout << "ID: " << pair.first << ", Password: " << pair.second.password << ", Name: " << pair.second.name << ", Age: " << pair.second.age << ", Gender: " << pair.second.gender << ", Governorate: " << pair.second.governorate << ", Dose: " << pair.second.dose << std::endl;
+	//}
+	
 
-	/* //decoy user for testing
-	User user2("1111", "Bob", 40, "Male", "Alex", 0);
-	userHash["3030260100659"] = user2;
-	*/
+	// //decoy user for testing
+	//User user1("1111", "Bob", 40, "Male", "Alex", 0);
+	//userHash["3030260100659"] = user1;
+	
 
 	int choice;
 	cout << "\n\t\t\t\t*Welcome to The Egyptian Vaccine Tracking System*\n";

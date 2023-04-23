@@ -13,12 +13,7 @@ User::User(string password, string name, int age, string gender, string governor
 }
 
 User::User() {
-	this->password = "";
-	this->name = "";
-	this->age = 0;
-	this->gender = "";
-	this->governorate = "";
-	this->dose = 0;
+
 }
 
 User::~User() {
