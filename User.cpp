@@ -21,5 +21,5 @@ User::~User() {
 }
 
 void User::displayData() {
-	cout << "Full name: " << name << "\nAge: " << age << "\nGender: " << gender << "\ngovernorate" << "\nVaccine dose: " << dose;
+	cout << "Full name: " << name << "\nAge: " << age << "\nGender: " << gender << "\nGovernorate" << "\nVaccine dose: " << dose;
 }
