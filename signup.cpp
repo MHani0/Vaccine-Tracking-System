@@ -3,6 +3,8 @@
 #include "Initial.h"
 
 using namespace std;
+
+
 bool isDigitString(const string& str) {
     for (char c : str) {
         if (!isdigit(c)) {
@@ -11,6 +13,8 @@ bool isDigitString(const string& str) {
     }
     return true;
 }
+
+
 Signup::Signup(QWidget* parent)
     : QMainWindow(parent), ui(new Ui::SignupClass)
 {
