@@ -6,6 +6,9 @@ Login_User::Login_User(QWidget* parent)
 {
     ui->setupUi(this);
 
+    //make the warning initially invisible 
+    ui->login_warn->setVisible(false);
+    
     connect(ui->login, &QPushButton::clicked, this, &Login_User::login_clicked);
     connect(ui->back, &QPushButton::clicked, this, &Login_User::back_clicked);
 }
@@ -20,24 +23,25 @@ void Login_User::login_clicked() {
 
     // read from text boxes, validate inputs, then proceed or give an error message if wrong
 
-    QString natID = ui->natID->toPlainText();
+    QString natID = ui->natID->text();
     string key = natID.toStdString();
 
-    QString password = ui->password->toPlainText();
+    QString password = ui->password->text();
     string value = password.toStdString();
 
     if (userHash.count(key)){
         if (value == userHash[key].password) {
+            ui->login_warn->setVisible(false);
             qDebug() << "Login Success";
             //Display next screen
         }
         else {
-            //Display Failure text with reason (Invalid Pass)
+            ui->login_warn->setVisible(true);
             qDebug() << "Login Failed";
         }
     }
     else {
-        //Display Failure text with reason (Invalid ID)
+        ui->login_warn->setVisible(true);
         qDebug() << "Login Failed";
     }
 }

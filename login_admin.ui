@@ -26,19 +26,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="password">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>170</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Admin Password</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="back">
     <property name="geometry">
      <rect>
@@ -63,6 +50,37 @@
     </property>
     <property name="text">
      <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>170</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Admin Password</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="password_warn">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>280</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Wrong Admin Password</string>
     </property>
    </widget>
   </widget>

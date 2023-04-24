@@ -13,9 +13,9 @@ int main(int argc, char *argv[])
 
 
 	//print values in hash for debugging
-	/*for (auto & pair : userHash) {
+	for (auto & pair : userHash) {
 		qDebug() << "ID: " << pair.first << ", Password: " << pair.second.password << ", Name: " << pair.second.name << ", Age: " << pair.second.age << ", Gender: " << pair.second.gender << ", Governorate: " << pair.second.governorate << ", Dose: " << pair.second.dose << "\n";
-	}*/
+	}
 
 
     Initial inital;
@@ -62,3 +62,5 @@ void load_data(unordered_map<string, User>& userHash, string filename) {
 		userHash[id] = user;
 	}
 }
+
+

@@ -26,32 +26,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="natID">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>160</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>National ID</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="password">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>220</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Password</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="login">
     <property name="geometry">
      <rect>
@@ -76,6 +50,50 @@
     </property>
     <property name="text">
      <string>Back</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="login_warn">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>330</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Invalid Login Credentials!</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="natID">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>160</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>National ID</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>220</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Password</string>
     </property>
    </widget>
   </widget>
