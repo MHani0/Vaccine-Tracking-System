@@ -1,6 +1,6 @@
 #include "login_user.h"
 #include "Initial.h"
-
+#include "main.h"
 Login_User::Login_User(QWidget* parent)
     : QMainWindow(parent), ui(new Ui::LoginUserClass)
 {
@@ -18,14 +18,27 @@ Login_User::~Login_User()
 
 void Login_User::login_clicked() {
 
-//read from text boxes, validate inputs, then proceed or give an error message if wrong
-    //validate inputs and length of nat ID
-    QString natID = ui->natID->toPlainText();
-    QString password = ui->password->toPlainText();
+    // read from text boxes, validate inputs, then proceed or give an error message if wrong
 
-    if (natID == "12345" && password == "password") {
-     
-        //display next screen
+    QString natID = ui->natID->toPlainText();
+    string key = natID.toStdString();
+
+    QString password = ui->password->toPlainText();
+    string value = password.toStdString();
+
+    if (userHash.count(key)){
+        if (value == userHash[key].password) {
+            qDebug() << "Login Success";
+            //Display next screen
+        }
+        else {
+            //Display Failure text with reason (Invalid Pass)
+            qDebug() << "Login Failed";
+        }
+    }
+    else {
+        //Display Failure text with reason (Invalid ID)
+        qDebug() << "Login Failed";
     }
 }
 

@@ -13,7 +13,6 @@ public:
 	string password;
 	string name;
 	int age;
-	//string nationalId;
 	string gender;
 	string governorate;
 	int dose;

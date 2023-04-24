@@ -4,10 +4,7 @@
 int main(int argc, char *argv[])
 {
 
-
-    unordered_map < string, User> userHash;
     string filename = "users.txt";
-
     QApplication a(argc, argv);
 
 
@@ -15,17 +12,15 @@ int main(int argc, char *argv[])
 
 
 
-	 /* //print values in hash for debugging
+	  //print values in hash for debugging
 	for (auto & pair : userHash) {
 		qDebug() << "ID: " << pair.first << ", Password: " << pair.second.password << ", Name: " << pair.second.name << ", Age: " << pair.second.age << ", Gender: " << pair.second.gender << ", Governorate: " << pair.second.governorate << ", Dose: " << pair.second.dose << "\n";
-	} */
+	}
 
 
-	/* //decoy user for testing
+	 //decoy user for testing
 	User user1("1111", "Bob", 40, "Male", "Alex", 0);
-	userHash["30303120100444"] = user1;
-	*/
-
+	userHash.insert({"3030120144",user1});
 
 
     Initial inital;

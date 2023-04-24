@@ -11,6 +11,9 @@
 #include <unordered_map>
 #include "User.h"
 
+//Main.cpp variables
+inline unordered_map <string, User> userHash;
+
 //Main.cpp functions
 void save_data(unordered_map<string, User>&, string);
 void load_data(unordered_map<string, User>&, string);
