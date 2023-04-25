@@ -78,7 +78,6 @@ void Signup::signup_clicked() {
     string password = q_password.toStdString();
 
     string q_age = ui->age->text().toStdString();
-    int age = 0;
 
     QString q_governorate = ui->governorate->text();
     string governorate = q_governorate.toStdString();
@@ -122,7 +121,7 @@ void Signup::signup_clicked() {
     //if everything is valid then create user
     if (id_valid && name_valid && age_valid && password_valid && gender_valid && vaccine_valid && governorate_valid) {
         qDebug() << "User Created";
-        User user(password, name, age, gender, governorate, vaccine);
+        User user(password, name, stoi(q_age), gender, governorate, vaccine);
         userHash[natID] = user;
         //next page
     }

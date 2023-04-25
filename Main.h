@@ -7,12 +7,14 @@
 #include <unordered_map>
 #include <string>
 #include "User.h"
+#include "LinkedList.h"
 
-#include <unordered_map>
-#include "User.h"
+
 
 //Main.cpp variables
 inline unordered_map <string, User> userHash;
+inline LinkedList vaccinated_list;
+
 
 //Main.cpp functions
 void save_data(unordered_map<string, User>&, string);
