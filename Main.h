@@ -8,6 +8,7 @@
 #include <string>
 #include "User.h"
 #include "LinkedList.h"
+#include <queue>
 
 
 
@@ -19,4 +20,9 @@ inline LinkedList vaccinated_list;
 //Main.cpp functions
 void save_data(unordered_map<string, User>&, string);
 void load_data(unordered_map<string, User>&, string);
+void handlingDoses();
+void Basic_statistics();
+void delUser(string);
 
+queue <string> not_vaccinated;
+LinkedList vaccinated;
