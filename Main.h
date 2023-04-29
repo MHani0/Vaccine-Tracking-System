@@ -24,5 +24,5 @@ void handlingDoses();
 void Basic_statistics();
 void delUser(string);
 
-queue <string> not_vaccinated;
-LinkedList vaccinated;
+inline queue <string> not_vaccinated;
+inline LinkedList vaccinated;

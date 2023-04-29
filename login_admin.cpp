@@ -26,6 +26,7 @@ void Login_Admin::login_clicked() {
 
     if (password == "admin") {
         ui->password_warn->setVisible(false);
+        qDebug() << "Admin Login Success";
         //display next screen
     }
     else {
