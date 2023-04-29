@@ -99,6 +99,7 @@
     <ClCompile Include="login_user.cpp" />
     <ClCompile Include="signup.cpp" />
     <ClCompile Include="user.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <QtRcc Include="Initial.qrc" />
     <QtUic Include="Initial.ui" />
     <QtMoc Include="Initial.h" />
@@ -120,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="main.h" />
     <ClInclude Include="user.h" />
+    <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
