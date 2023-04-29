@@ -56,8 +56,7 @@ Signup::~Signup()
     delete ui;
 }
 
-//bugs: errors do not show together (solvable by crooky if statement too many conditions)
-// age text box not added (code written)
+
 //Running does not save in files
 
 void Signup::signup_clicked() {
@@ -67,9 +66,6 @@ void Signup::signup_clicked() {
 
     QString q_name = ui->name->text();
     string name = q_name.toStdString();
-
-    /*QString age = ui->age->toPlainText();
-    string std_age = age.toStdString();*/
 
     QString q_natID = ui->natID->text();
     string natID = q_natID.toStdString();
