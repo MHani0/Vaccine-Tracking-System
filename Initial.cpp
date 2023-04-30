@@ -2,11 +2,15 @@
 #include "login_user.h"
 #include "login_admin.h"
 #include "signup.h"
+#include "Main.h"
 
 Initial::Initial(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::InitialClass)
 {
     ui->setupUi(this);
+
+    //reset any logged in user
+    loggedInUserID = "";
 
     connect(ui->login_user, &QPushButton::clicked, this, &Initial::login_user_button_clicked);
     connect(ui->login_admin, &QPushButton::clicked, this, &Initial::login_admin_button_clicked);

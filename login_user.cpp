@@ -1,6 +1,8 @@
 #include "login_user.h"
 #include "Initial.h"
+#include "user_screen.h"
 #include "main.h"
+
 Login_User::Login_User(QWidget* parent)
     : QMainWindow(parent), ui(new Ui::LoginUserClass)
 {
@@ -33,7 +35,13 @@ void Login_User::login_clicked() {
         if (value == userHash[key].password) {
             ui->login_warn->setVisible(false);
             qDebug() << "Login Success";
+
+            loggedInUserID = key;
             //Display next screen
+            User_Screen* user_screen = new User_Screen();
+            user_screen->show();
+            this->close();
+
         }
         else {
             ui->login_warn->setVisible(true);

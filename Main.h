@@ -4,25 +4,32 @@
 #include <qdebug.h>
 #include<iostream>
 #include <fstream>
+#include <sstream>
 #include <unordered_map>
+#include <algorithm>
+#include <vector>
 #include <string>
 #include "User.h"
 #include "LinkedList.h"
 #include <queue>
 
 
+//Global variables
+inline string loggedInUserID; //the currently logged in user
+
 
 //Main.cpp variables
 inline unordered_map <string, User> userHash;
-inline LinkedList vaccinated_list;
-
+inline vector <string> hashKeysOrdered; //to maintain the order of insertion of hash table
+inline queue <string> not_vaccinated;
+inline LinkedList vaccinated;
 
 //Main.cpp functions
 void save_data(unordered_map<string, User>&, string);
 void load_data(unordered_map<string, User>&, string);
 void handlingDoses();
 void Basic_statistics();
-void delUser(string);
+void deleteUser(string);
+bool isDigitString(const string&);
+string trim(const std::string& s);
 
-queue <string> not_vaccinated;
-LinkedList vaccinated;

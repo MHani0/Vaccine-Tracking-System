@@ -100,6 +100,7 @@
     <ClCompile Include="signup.cpp" />
     <ClCompile Include="user.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="user_screen.cpp" />
     <QtRcc Include="Initial.qrc" />
     <QtUic Include="Initial.ui" />
     <QtMoc Include="Initial.h" />
@@ -107,6 +108,7 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="login_admin.ui" />
     <QtUic Include="login_user.ui" />
+    <QtUic Include="user_screen.ui" />
     <QtUic Include="signup.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +124,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="user.h" />
     <ClInclude Include="LinkedList.h" />
+    <QtMoc Include="user_screen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

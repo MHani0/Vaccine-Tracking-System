@@ -33,7 +33,7 @@
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>450</y>
+      <y>430</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -49,7 +49,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>450</y>
+      <y>430</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -62,7 +62,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>270</y>
+      <y>250</y>
       <width>89</width>
       <height>20</height>
      </rect>
@@ -78,7 +78,7 @@
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>270</y>
+      <y>250</y>
       <width>89</width>
       <height>20</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>363</y>
+      <y>343</y>
       <width>90</width>
       <height>20</height>
      </rect>
@@ -110,7 +110,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>383</y>
+      <y>363</y>
       <width>90</width>
       <height>20</height>
      </rect>
@@ -126,7 +126,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>403</y>
+      <y>383</y>
       <width>90</width>
       <height>20</height>
      </rect>
@@ -142,7 +142,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>70</y>
+      <y>50</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -155,7 +155,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>120</y>
+      <y>100</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -168,7 +168,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>170</y>
+      <y>150</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -181,7 +181,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>267</y>
+      <y>247</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -194,7 +194,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>310</y>
+      <y>290</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -207,7 +207,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>360</y>
+      <y>340</y>
       <width>80</width>
       <height>20</height>
      </rect>
@@ -220,7 +220,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>220</y>
+      <y>200</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -233,7 +233,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>70</y>
+      <y>50</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -246,13 +246,13 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>70</y>
+      <y>50</y>
       <width>121</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>[Invalid name!]</string>
+     <string>[Name is required!]</string>
     </property>
     <property name="textFormat">
      <enum>Qt::PlainText</enum>
@@ -265,7 +265,7 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>120</y>
+      <y>100</y>
       <width>131</width>
       <height>21</height>
      </rect>
@@ -284,13 +284,13 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>170</y>
+      <y>150</y>
       <width>121</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>[Invalid password!]</string>
+     <string>[Password too short!]</string>
     </property>
     <property name="textFormat">
      <enum>Qt::PlainText</enum>
@@ -303,7 +303,7 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>220</y>
+      <y>200</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -322,13 +322,13 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>310</y>
-      <width>121</width>
+      <y>290</y>
+      <width>141</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>[Invalid governorate!]</string>
+     <string>[Governorate is required!]</string>
     </property>
     <property name="textFormat">
      <enum>Qt::PlainText</enum>
@@ -338,7 +338,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>120</y>
+      <y>100</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -348,7 +348,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>170</y>
+      <y>150</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -358,7 +358,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>220</y>
+      <y>200</y>
       <width>141</width>
       <height>31</height>
      </rect>
@@ -368,10 +368,66 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>310</y>
+      <y>290</y>
       <width>141</width>
       <height>31</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="successfully">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>470</y>
+      <width>481</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>You have signed up successfully, go back and login!</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gender_warn">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>250</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[Gender is required!]</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="dose_warn">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>350</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>[Vaccine status is required!]</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
     </property>
    </widget>
   </widget>
@@ -390,7 +446,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="vaccineButtonGroup"/>
   <buttongroup name="genderButtonGroup"/>
+  <buttongroup name="vaccineButtonGroup"/>
  </buttongroups>
 </ui>

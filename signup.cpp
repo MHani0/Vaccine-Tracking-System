@@ -5,14 +5,7 @@
 using namespace std;
 
 
-bool isDigitString(const string& str) {
-    for (char c : str) {
-        if (!isdigit(c)) {
-            return false;
-        }
-    }
-    return true;
-}
+
 
 
 Signup::Signup(QWidget* parent)
@@ -36,6 +29,14 @@ Signup::Signup(QWidget* parent)
     ui->age_warn->setVisible(false);
     ui->ID_warn->setVisible(false);
     ui->gov_warn->setVisible(false);
+    ui->gender_warn->setVisible(false);
+    ui->dose_warn->setVisible(false);
+
+    //successful note
+    ui->successfully->setVisible(false);
+
+    //make it initially enabled
+    ui->signup->setEnabled(true);
     
     //buttons
     connect(ui->signup, &QPushButton::clicked, this, &Signup::signup_clicked);
@@ -85,6 +86,9 @@ void Signup::signup_clicked() {
     //make sure a box got checked before proceeding to not read from NULL
     string gender;
     if (ui->genderButtonGroup->checkedButton() != nullptr) {
+
+        ui->gender_warn->setVisible(false);
+
         QString q_gender = ui->genderButtonGroup->checkedButton()->objectName();
         if (q_gender.toStdString() == "male")
             gender = "male";
@@ -95,12 +99,17 @@ void Signup::signup_clicked() {
         gender_valid = true;
     }
     else {
+        ui->gender_warn->setVisible(true);
+        gender_valid = false;
         qDebug() << "Gender Required Field!";
     }
     
     //returns unvaccinated or vaccinated_1 or vaccinated_2
     int vaccine = 0;
     if (ui->vaccineButtonGroup->checkedButton() != nullptr) {  //make sure not NULL
+
+        ui->dose_warn->setVisible(false);
+
         QString q_vaccine = ui->vaccineButtonGroup->checkedButton()->objectName();
         if (q_vaccine.toStdString() == "unvaccinated")
             vaccine = 0;
@@ -113,6 +122,8 @@ void Signup::signup_clicked() {
         vaccine_valid = true;
     }
     else {
+        ui->dose_warn->setVisible(true);
+        vaccine_valid = false;
         qDebug() << "Vaccine is Required Field!";
     }
  
@@ -120,9 +131,21 @@ void Signup::signup_clicked() {
     
     //if everything is valid then create user
     if (id_valid && name_valid && age_valid && password_valid && gender_valid && vaccine_valid && governorate_valid) {
+
+        ui->signup->setEnabled(false);
+        ui->successfully->setVisible(true);
+
         qDebug() << "User Created";
         User user(password, name, stoi(q_age), gender, governorate, vaccine);
+        hashKeysOrdered.push_back(natID);
         userHash[natID] = user;
+
+        //insert him into either queue waiting list or linked list, depending on his dose
+        if (vaccine == 0)
+            not_vaccinated.push(natID);
+        else
+            vaccinated.insert(natID, userHash);
+
         //next page
     }
    
