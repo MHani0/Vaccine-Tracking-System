@@ -32,5 +32,6 @@ void Basic_statistics();
 void deleteUser(string);
 bool isDigitString(const string&);
 string trim(const std::string& s);
+void Advanced_statistics();
 
 
