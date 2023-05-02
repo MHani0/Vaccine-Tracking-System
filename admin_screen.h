@@ -12,6 +12,8 @@ public:
 	~Admin_Screen();
 
 private:
+	double malesRatio, femalesRatio, unvaccinatedRatio,
+		firstdoseRatio, seconddoseRatio;
 
 	void Basic_statistics();
 
@@ -29,6 +31,7 @@ private slots:
 	void delete_clicked();
 	void records_back_clicked();
 	void table_record_clicked(int,int);
+	void selection_changed();
 
 	//admin_delete frame
 	void yes_clicked();

@@ -17,11 +17,6 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 
 	//set basic statistics
 	Basic_statistics();
-	ui->male_stats->display(malesRatio);
-	ui->female_stats->display(femalesRatio);
-	ui->first_dose_stats->display(firstdoseRatio);
-	ui->second_dose_stats->display(seconddoseRatio);
-	ui->unvaccinated_stats->display(unvaccinatedRatio);
 
     //buttons in admin_screen
     connect(ui->view_records, &QPushButton::clicked, this, &Admin_Screen::records_clicked);
@@ -37,9 +32,10 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 	connect(ui->view_record, &QPushButton::clicked, this, &Admin_Screen::view_clicked);
 
 	//table initialization & connection and setting up selection
-	connect(ui->record_table, SIGNAL(cellClicked(int, int)), this, SLOT(table_record_clicked(int, int)));
-
-
+	connect(ui->record_table, &QTableWidget::cellClicked, this, &Admin_Screen::table_record_clicked);
+	connect(ui->record_table, &QTableWidget::itemSelectionChanged, this, &Admin_Screen::selection_changed);
+	ui->record_table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	
 	//buttons in admin delete
 	connect(ui->yes_delete, &QPushButton::clicked, this, &Admin_Screen::yes_clicked);
 	connect(ui->no_delete, &QPushButton::clicked, this, &Admin_Screen::no_clicked);
@@ -51,10 +47,11 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 
 	//buttons in view_vax
 	connect(ui->vax_back_button, &QPushButton::clicked, this, &Admin_Screen::vaccinated_back_clicked);
-
+	ui->vax_table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	//buttons in view_unvax
 	connect(ui->unvax_back_button, &QPushButton::clicked, this, &Admin_Screen::unvaccinated_back_clicked);
+	ui->unvax_table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 Admin_Screen::~Admin_Screen()
@@ -63,6 +60,17 @@ Admin_Screen::~Admin_Screen()
 }
 
 void Admin_Screen::Basic_statistics() {
+
+	malesRatio = femalesRatio = unvaccinatedRatio = firstdoseRatio = seconddoseRatio = 0.0;
+
+	if (userHash.empty()) {
+		ui->male_stats->display(0.0);
+		ui->female_stats->display(0.0);
+		ui->first_dose_stats->display(0.0);
+		ui->second_dose_stats->display(0.0);
+		ui->unvaccinated_stats->display(0.0);
+		return;
+	}
 
 	for (const auto& pair : userHash) {
 		if (pair.second.gender == "male" || pair.second.gender == "Male")
@@ -76,12 +84,19 @@ void Admin_Screen::Basic_statistics() {
 		else if (pair.second.dose == 2)
 			seconddoseRatio++;
 	}
-	malesRatio /= userHash.size();
-	femalesRatio /= userHash.size();
-	unvaccinatedRatio /= userHash.size();
-	firstdoseRatio /= userHash.size();
-	seconddoseRatio /= userHash.size();
+	malesRatio = (malesRatio*100) / userHash.size();
+	femalesRatio = (femalesRatio * 100) / userHash.size();
+	unvaccinatedRatio = (unvaccinatedRatio * 100) / userHash.size();
+	firstdoseRatio = (firstdoseRatio * 100) / userHash.size();
+	seconddoseRatio = (seconddoseRatio * 100) / userHash.size();
 
+	qDebug() << malesRatio << femalesRatio << firstdoseRatio << seconddoseRatio << unvaccinatedRatio;
+	
+	ui->male_stats->display(malesRatio);
+	ui->female_stats->display(femalesRatio);
+	ui->first_dose_stats->display(firstdoseRatio);
+	ui->second_dose_stats->display(seconddoseRatio);
+	ui->unvaccinated_stats->display(unvaccinatedRatio);
 }
 
 //admin functions
@@ -89,6 +104,10 @@ void Admin_Screen::records_clicked() {
 	ui->admin_screen->setVisible(false);
 	ui->user_records->setVisible(true);
 
+	ui->view_record->setVisible(false);
+	ui->delete_record->setVisible(false);
+
+	ui->input_id->setText(""); //resetting search bar
 	//loop filling table
 	ui->record_table->setRowCount(0);
 	int row = 0;
@@ -155,6 +174,8 @@ void Admin_Screen::unvaccinated_clicked() {
 		ui->unvax_table->setItem(row, 1, fullName);
 
 		copy_queue.pop();
+
+		row++;
 	}
 }
 void Admin_Screen::signout_clicked() {
@@ -180,7 +201,7 @@ void Admin_Screen::search_clicked() {
 		int searchDose = userHash[searchID].dose;
 		
 
-		if (searchDose == dose_value || dose_value == 3) {
+		if (searchDose + 1 == dose_value || dose_value == 0) {
 			QTableWidgetItem* natID = new QTableWidgetItem(search_text);
 			QTableWidgetItem* fullName = new QTableWidgetItem(QString::fromStdString(userHash[searchID].name));
 			QTableWidgetItem* dose = new QTableWidgetItem(QString::number(userHash[searchID].dose));
@@ -196,7 +217,7 @@ void Admin_Screen::search_clicked() {
 	}
 	else if (searchID == "") {
 
-		if (dose_value == 3) {
+		if (dose_value == 0) {
 			qDebug() << "Display All";
 			records_clicked();
 			return;
@@ -206,7 +227,7 @@ void Admin_Screen::search_clicked() {
 
 		for (auto& [ID, User] : userHash) {
 
-			if (dose_value == User.dose) {
+			if (dose_value == User.dose + 1) {
 
 				QTableWidgetItem* natID = new QTableWidgetItem(QString::fromStdString(ID));
 				QTableWidgetItem* fullName = new QTableWidgetItem(QString::fromStdString(User.name));
@@ -232,12 +253,23 @@ void Admin_Screen::table_record_clicked(int row, int col) {
 		ui->record_table->clearSelection(); // Disable selection
 		return;
 	}
-		
+
+	ui->view_record->setVisible(true);
+	ui->delete_record->setVisible(true);
+
 	row = ui->record_table->currentRow();
 
 	chosenUserID = ui->record_table->item(row, 0)->text().toStdString();
 	
 
+}
+
+void Admin_Screen::selection_changed(){
+	//if no cell selected, disable buttons
+	if (ui->record_table->selectedItems().isEmpty()) {
+		ui->view_record->setVisible(false);
+		ui->delete_record->setVisible(false);
+	}
 }
 void Admin_Screen::view_clicked() {
 	
@@ -285,6 +317,9 @@ void Admin_Screen::delete_clicked() {
 }
 void Admin_Screen::records_back_clicked() {
 	chosenUserID = "";
+
+	Basic_statistics();
+
 	ui->user_records->setVisible(false);
 	ui->admin_screen->setVisible(true);
 }
@@ -296,6 +331,8 @@ void Admin_Screen::yes_clicked() {
 	deleteUser(chosenUserID);
 	chosenUserID = "";
 	qDebug() << "User Deleted";
+	
+	records_clicked();
 
 	ui->admin_delete->setVisible(false);
 	ui->user_records->setVisible(true);

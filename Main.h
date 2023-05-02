@@ -17,7 +17,7 @@
 //Global variables
 inline string loggedInUserID; //the currently logged in user
 inline string chosenUserID = ""; //admin chosen user
-inline double malesRatio, femalesRatio, unvaccinatedRatio, firstdoseRatio, seconddoseRatio = 0.0;
+
 //Main.cpp variables
 inline unordered_map <string, User> userHash;
 inline vector <string> hashKeysOrdered; //to maintain the order of insertion of hash table
