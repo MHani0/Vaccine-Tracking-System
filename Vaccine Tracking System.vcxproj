@@ -95,6 +95,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="admin_screen.cpp" />
     <ClCompile Include="login_admin.cpp" />
     <ClCompile Include="login_user.cpp" />
     <ClCompile Include="signup.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="user_screen.cpp" />
     <QtRcc Include="Initial.qrc" />
+    <QtUic Include="admin_screen.ui" />
     <QtUic Include="Initial.ui" />
     <QtMoc Include="Initial.h" />
     <ClCompile Include="Initial.cpp" />
@@ -121,6 +123,7 @@
     <QtMoc Include="signup.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="admin_screen.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="user.h" />
     <ClInclude Include="LinkedList.h" />

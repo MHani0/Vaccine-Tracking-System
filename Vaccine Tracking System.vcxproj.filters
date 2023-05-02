@@ -58,6 +58,9 @@
     <ClCompile Include="user_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="admin_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="login_user.ui">
@@ -72,6 +75,9 @@
     <QtUic Include="user_screen.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="admin_screen.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="login_user.h">
@@ -84,6 +90,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="user_screen.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="admin_screen.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

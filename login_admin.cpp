@@ -1,5 +1,6 @@
 #include "login_admin.h"
 #include "Initial.h"
+#include "admin_screen.h"
 
 Login_Admin::Login_Admin(QWidget* parent)
     : QMainWindow(parent), ui(new Ui::LoginAdminClass)
@@ -28,6 +29,9 @@ void Login_Admin::login_clicked() {
         ui->password_warn->setVisible(false);
         qDebug() << "Admin Login Success";
         //display next screen
+        Admin_Screen* admin_screen = new Admin_Screen();
+        admin_screen->show();
+        this->close();
     }
     else {
         ui->password_warn->setVisible(true);

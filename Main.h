@@ -16,8 +16,8 @@
 
 //Global variables
 inline string loggedInUserID; //the currently logged in user
-
-
+inline string chosenUserID = ""; //admin chosen user
+inline double malesRatio, femalesRatio, unvaccinatedRatio, firstdoseRatio, seconddoseRatio = 0.0;
 //Main.cpp variables
 inline unordered_map <string, User> userHash;
 inline vector <string> hashKeysOrdered; //to maintain the order of insertion of hash table
@@ -28,7 +28,6 @@ inline LinkedList vaccinated;
 void save_data(unordered_map<string, User>&, string);
 void load_data(unordered_map<string, User>&, string);
 void handlingDoses();
-void Basic_statistics();
 void deleteUser(string);
 bool isDigitString(const string&);
 string trim(const std::string& s);
