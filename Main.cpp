@@ -125,27 +125,7 @@ void handlingDoses()
 	}
 }
 
-void Basic_statistics()
-{
-	int malesRatio, femalesRatio, unvaccinatedRatio, firstdoseRatio, seconddoseRatio;
-	for (const auto& pair : userHash) {
-		if (pair.second.gender == "male" || pair.second.gender == "Male")
-			malesRatio++;
-		else if (pair.second.gender == "female" || pair.second.gender == "Female")
-			femalesRatio++;
-		if (pair.second.dose == 0)
-			unvaccinatedRatio++;
-		else if (pair.second.dose == 1)
-			firstdoseRatio++;
-		else if (pair.second.dose == 2)
-			seconddoseRatio++;
-	}
-	malesRatio /= userHash.size();
-	femalesRatio /= userHash.size();
-	unvaccinatedRatio /= userHash.size();
-	firstdoseRatio /= userHash.size();
-	seconddoseRatio /= userHash.size();
-}
+
 void deleteUser(string natID)
 {
 
