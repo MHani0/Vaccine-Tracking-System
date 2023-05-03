@@ -108,13 +108,15 @@ void Admin_Screen::records_clicked() {
 	ui->delete_record->setVisible(false);
 
 	ui->input_id->setText(""); //resetting search bar
+	ui->dose_filter->setCurrentIndex(0);
+
 	//loop filling table
 	ui->record_table->setRowCount(0);
 	int row = 0;
-	for (auto& [ID, User] : userHash) {
-		QTableWidgetItem* natID = new QTableWidgetItem(QString::fromStdString(ID));
-		QTableWidgetItem* fullName = new QTableWidgetItem(QString::fromStdString(User.name));
-		QTableWidgetItem* dose = new QTableWidgetItem(QString::number(User.dose));
+	for (auto& key : hashKeysOrdered) {
+		QTableWidgetItem* natID = new QTableWidgetItem(QString::fromStdString(key));
+		QTableWidgetItem* fullName = new QTableWidgetItem(QString::fromStdString(userHash[key].name));
+		QTableWidgetItem* dose = new QTableWidgetItem(QString::number(userHash[key].dose));
 		
 		ui->record_table->insertRow(row);
 		ui->record_table->setItem(row, 0, natID);
@@ -258,6 +260,11 @@ void Admin_Screen::table_record_clicked(int row, int col) {
 	ui->delete_record->setVisible(true);
 
 	row = ui->record_table->currentRow();
+
+	//when a row is clicked, select all other columns within this row
+	for (int col = 0; col < 3; col++) {
+		ui->record_table->item(row, col)->setSelected(true);
+	}
 
 	chosenUserID = ui->record_table->item(row, 0)->text().toStdString();
 	

@@ -854,7 +854,7 @@
       <rect>
        <x>370</x>
        <y>300</y>
-       <width>71</width>
+       <width>81</width>
        <height>20</height>
       </rect>
      </property>
@@ -872,7 +872,7 @@
       <rect>
        <x>370</x>
        <y>350</y>
-       <width>80</width>
+       <width>91</width>
        <height>20</height>
       </rect>
      </property>
@@ -1322,6 +1322,12 @@
      </property>
     </widget>
    </widget>
+   <zorder>admin_display</zorder>
+   <zorder>admin_screen</zorder>
+   <zorder>user_records</zorder>
+   <zorder>admin_delete</zorder>
+   <zorder>view_vax</zorder>
+   <zorder>view_unvax</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
