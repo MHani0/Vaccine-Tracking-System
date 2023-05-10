@@ -364,16 +364,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="governorate">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>290</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="successfully">
     <property name="geometry">
      <rect>
@@ -430,6 +420,156 @@
      <enum>Qt::PlainText</enum>
     </property>
    </widget>
+   <widget class="QComboBox" name="governorate">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>290</y>
+      <width>151</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Alexandria</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Aswan</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Asyut</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Beheira</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Beni Suef</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cairo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Dakahlia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Damietta</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Faiyum</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Gharbia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Giza</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ismailia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kafr El Sheikh</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Luxor</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Matrouh</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Minya</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Monufia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>New Valley</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>North Sinai</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Port Said</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Qalyubia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Qena</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Red Sea</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sharqia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sohag</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>South Sinai</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Suez</string>
+     </property>
+    </item>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -446,7 +586,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="genderButtonGroup"/>
   <buttongroup name="vaccineButtonGroup"/>
+  <buttongroup name="genderButtonGroup"/>
  </buttongroups>
 </ui>

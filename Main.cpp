@@ -159,6 +159,9 @@ void deleteUser(string natID)
 
 
 bool isDigitString(const string& str) {
+
+	if (str.length() == 0) return false;
+
 	for (char c : str) {
 		if (!isdigit(c)) {
 			return false;
@@ -178,41 +181,4 @@ string trim(const std::string& s) {
 		--end;
 	}
 	return string(start, end);
-}
-void Advanced_statistics()
-{
-	
-    int kidsRatio , adultsRatio ,  elderlyRatio ,  cairoRatio , alexandriaRatio , luxorANDaswanRatio, sinaiRatio , othersRatio , gizaRatio;
-	kidsRatio = adultsRatio = elderlyRatio = cairoRatio = alexandriaRatio = luxorANDaswanRatio = gizaRatio = sinaiRatio = othersRatio = 0;
-	for (const auto& pair : userHash) {
-		if (pair.second.age < 18)
-			kidsRatio++;
-		else if (pair.second.age >= 18 && pair.second.age < 65)
-			adultsRatio++;
-		else if (pair.second.age >= 65)
-			elderlyRatio++;
-		if (pair.second.governorate == "Cairo" || pair.second.governorate == "cairo")
-			cairoRatio++;
-		else if (pair.second.governorate == "Alexandria" || pair.second.governorate == "alexandria")
-			alexandriaRatio++;
-		else if (pair.second.governorate == "Luxor" || pair.second.governorate == "luxor" || pair.second.governorate == "Aswan" || pair.second.governorate == "aswan")
-			luxorANDaswanRatio++;
-		else if (pair.second.governorate == "Giza" || pair.second.governorate == "giza")
-			gizaRatio++;
-		else if (pair.second.governorate == "Sinai" || pair.second.governorate == "sinai")
-			sinaiRatio++;
-		else
-			othersRatio++;
-
-
-	}
-	kidsRatio /= userHash.size();
-	adultsRatio /= userHash.size();
-	elderlyRatio /= userHash.size();
-	cairoRatio /= userHash.size();
-	alexandriaRatio /= userHash.size();
-	luxorANDaswanRatio /= userHash.size();
-	gizaRatio /= userHash.size();
-	sinaiRatio /= userHash.size(); 
-	othersRatio /= userHash.size();
 }

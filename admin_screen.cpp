@@ -14,14 +14,16 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 	ui->admin_delete->setVisible(false);
 	ui->view_vax->setVisible(false);
 	ui->view_unvax->setVisible(false);
+	ui->advanced_frame->setVisible(false);
 
 	//set basic statistics
-	Basic_statistics();
+	basic_statistics();
 
     //buttons in admin_screen
     connect(ui->view_records, &QPushButton::clicked, this, &Admin_Screen::records_clicked);
 	connect(ui->view_vaccinated, &QPushButton::clicked, this, &Admin_Screen::vaccinated_clicked);
     connect(ui->view_unvaccinated, &QPushButton::clicked, this, &Admin_Screen::unvaccinated_clicked);
+    connect(ui->view_advanced, &QPushButton::clicked, this, &Admin_Screen::advanced_clicked);
     connect(ui->admin_signout, &QPushButton::clicked, this, &Admin_Screen::signout_clicked);
 
 
@@ -52,6 +54,12 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 	//buttons in view_unvax
 	connect(ui->unvax_back_button, &QPushButton::clicked, this, &Admin_Screen::unvaccinated_back_clicked);
 	ui->unvax_table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+	//buttons and events in advanced_frame
+	connect(ui->back_button_adv, &QPushButton::clicked, this, &Admin_Screen::advanced_back_clicked);
+	connect(ui->governorate_adv, SIGNAL(currentIndexChanged(int)), this, SLOT(advanced_filter_changed()));
+	connect(ui->low_range, QOverload<int>::of(&QSpinBox::valueChanged), this, &Admin_Screen::advanced_filter_changed);
+	connect(ui->high_range, QOverload<int>::of(&QSpinBox::valueChanged), this, &Admin_Screen::advanced_filter_changed);
 }
 
 Admin_Screen::~Admin_Screen()
@@ -59,7 +67,7 @@ Admin_Screen::~Admin_Screen()
 	delete ui;
 }
 
-void Admin_Screen::Basic_statistics() {
+void Admin_Screen::basic_statistics() {
 
 	malesRatio = femalesRatio = unvaccinatedRatio = firstdoseRatio = seconddoseRatio = 0.0;
 
@@ -108,7 +116,10 @@ void Admin_Screen::records_clicked() {
 	ui->delete_record->setVisible(false);
 
 	ui->input_id->setText(""); //resetting search bar
-	ui->dose_filter->setCurrentIndex(0);
+	ui->dose_filter->setCurrentIndex(0); //resseting dose
+
+	//removing index from table
+	ui->record_table->verticalHeader()->setVisible(false);
 
 	//loop filling table
 	ui->record_table->setRowCount(0);
@@ -180,6 +191,24 @@ void Admin_Screen::unvaccinated_clicked() {
 		row++;
 	}
 }
+
+
+void Admin_Screen::advanced_clicked() {
+
+	ui->admin_screen->setVisible(false);
+	ui->advanced_frame->setVisible(true);
+
+	//set initials
+	ui->governorate_adv->setCurrentIndex(0);
+	ui->low_range->setValue(0);
+	ui->high_range->setValue(120);
+
+
+	//we do not have to call advanced statistics here, when the initials are set, the valuechanged event will be triggered autoamtically
+
+}
+
+
 void Admin_Screen::signout_clicked() {
 
 	Initial* initial = new Initial();
@@ -227,13 +256,13 @@ void Admin_Screen::search_clicked() {
 		
 		int row = 0;
 
-		for (auto& [ID, User] : userHash) {
+		for (auto& key : hashKeysOrdered) {
 
-			if (dose_value == User.dose + 1) {
+			if (dose_value == userHash[key].dose + 1) {
 
-				QTableWidgetItem* natID = new QTableWidgetItem(QString::fromStdString(ID));
-				QTableWidgetItem* fullName = new QTableWidgetItem(QString::fromStdString(User.name));
-				QTableWidgetItem* dose = new QTableWidgetItem(QString::number(User.dose));
+				QTableWidgetItem* natID = new QTableWidgetItem(QString::fromStdString(key));
+				QTableWidgetItem* fullName = new QTableWidgetItem(QString::fromStdString(userHash[key].name));
+				QTableWidgetItem* dose = new QTableWidgetItem(QString::number(userHash[key].dose));
 
 				ui->record_table->insertRow(row);
 				ui->record_table->setItem(row, 0, natID);
@@ -325,7 +354,7 @@ void Admin_Screen::delete_clicked() {
 void Admin_Screen::records_back_clicked() {
 	chosenUserID = "";
 
-	Basic_statistics();
+	basic_statistics();
 
 	ui->user_records->setVisible(false);
 	ui->admin_screen->setVisible(true);
@@ -366,4 +395,88 @@ void Admin_Screen::vaccinated_back_clicked() {
 void Admin_Screen::unvaccinated_back_clicked() {
 	ui->view_unvax->setVisible(false);
 	ui->admin_screen->setVisible(true);
+}
+
+
+//advanced_frame functions
+void Admin_Screen::advanced_back_clicked() {
+	ui->advanced_frame->setVisible(false);
+	ui->admin_screen->setVisible(true);
+}
+
+void Admin_Screen::advanced_filter_changed() {
+
+	//make sure the high bounds of age isn't less than low bounds and vice versa
+	ui->low_range->setMaximum(ui->high_range->value());
+	ui->high_range->setMinimum(ui->low_range->value());
+
+	advanced_statistics();
+
+	
+	
+
+}
+
+
+void Admin_Screen::advanced_statistics() {
+	//init advanced varaibles with 0
+	users_count = users_unvax = users_1 = users_2 =
+	males_count = males_unvax = males_1 = males_2 =
+	females_count = females_unvax = females_1 = females_2 = 0;
+
+	for (const auto& pair : userHash) {
+		
+		//apply governorate and age filters
+		//match governorate unless it's all, then match low range and high range of the age filter
+		if ((ui->governorate_adv->currentText().toStdString() == pair.second.governorate || ui->governorate_adv->currentText().toStdString() == "All") &&
+			ui->low_range->value() <= pair.second.age && ui->high_range->value() >= pair.second.age) {
+
+			//all users
+			users_count++;
+			if (pair.second.dose == 0) users_unvax++;
+			else if (pair.second.dose == 1) users_1++;
+			else users_2++;
+
+			//males
+			if (pair.second.gender == "male" || pair.second.gender == "Male") {
+				males_count++;
+				if (pair.second.dose == 0) males_unvax++;
+				else if (pair.second.dose == 1) males_1++;
+				else males_2++;
+			}
+
+			//females
+			if (pair.second.gender == "female" || pair.second.gender == "Female") {
+				females_count++;
+				if (pair.second.dose == 0) females_unvax++;
+				else if (pair.second.dose == 1) females_1++;
+				else females_2++;
+			}
+		}
+	}
+
+	//set the labels
+	//all
+	ui->users_count->setText(QString::number(users_count));
+	ui->users_unvax->setText(QString::number(users_unvax));
+	ui->users_1->setText(QString::number(users_1));
+	ui->users_2->setText(QString::number(users_2));
+
+	//males
+	ui->males_count->setText(QString::number(males_count));
+	ui->males_unvax->setText(QString::number(males_unvax));
+	ui->males_1->setText(QString::number(males_1));
+	ui->males_2->setText(QString::number(males_2));
+
+	//females
+	ui->females_count->setText(QString::number(females_count));
+	ui->females_unvax->setText(QString::number(females_unvax));
+	ui->females_1->setText(QString::number(females_1));
+	ui->females_2->setText(QString::number(females_2));
+
+
+	qDebug() << users_count << users_unvax << users_1 << users_2 <<
+		males_count << males_unvax << males_1 << males_2 <<
+		females_count << females_unvax << females_1 << females_2;
+
 }

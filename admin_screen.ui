@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1006</width>
-    <height>592</height>
+    <width>960</width>
+    <height>570</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>960</width>
+    <height>570</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>960</width>
+    <height>570</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -97,7 +109,7 @@
      <property name="geometry">
       <rect>
        <x>410</x>
-       <y>330</y>
+       <y>310</y>
        <width>161</width>
        <height>51</height>
       </rect>
@@ -129,7 +141,7 @@
      <property name="geometry">
       <rect>
        <x>410</x>
-       <y>240</y>
+       <y>230</y>
        <width>161</width>
        <height>51</height>
       </rect>
@@ -432,6 +444,25 @@
      </property>
      <property name="text">
       <string>%</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="view_advanced">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>390</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>View Advanced Statistics</string>
      </property>
     </widget>
    </widget>
@@ -1322,19 +1353,676 @@
      </property>
     </widget>
    </widget>
+   <widget class="QFrame" name="advanced_frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>960</width>
+      <height>570</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="back_button_adv">
+     <property name="geometry">
+      <rect>
+       <x>445</x>
+       <y>460</y>
+       <width>91</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Back</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_36">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>20</y>
+       <width>321</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Advanced statistical insights </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_37">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>140</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Governorate:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_38">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>140</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Age range:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_39">
+     <property name="geometry">
+      <rect>
+       <x>710</x>
+       <y>142</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>to</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_40">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>142</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>from</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="governorate_adv">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>140</y>
+       <width>151</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>All</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Alexandria</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Aswan</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Asyut</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Beheira</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Beni Suef</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cairo</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dakahlia</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Damietta</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Faiyum</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Gharbia</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Giza</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Ismailia</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Kafr El Sheikh</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Luxor</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Matrouh</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Minya</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Monufia</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>New Valley</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>North Sinai</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Port Said</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Qalyubia</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Qena</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Red Sea</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sharqia</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sohag</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>South Sinai</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Suez</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QSpinBox" name="low_range">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>142</y>
+       <width>51</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>120</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="high_range">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>142</y>
+       <width>51</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>120</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_41">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>260</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Count:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="users_count">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>260</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_42">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>290</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Unvaccinated:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="users_unvax">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>290</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="users_1">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>320</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_43">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>320</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1st Dose:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_44">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>350</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>2nd Dose:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="users_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>350</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_45">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>230</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>All Users:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_46">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>260</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Count:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="males_unvax">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>290</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_47">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>350</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>2nd Dose:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_48">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>230</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Males:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="males_count">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>260</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="males_2">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>350</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_49">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>320</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1st Dose:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_50">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>290</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Unvaccinated:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="males_1">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>320</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_51">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>350</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>2nd Dose:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_52">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>260</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Count:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_53">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>230</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Females:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="females_2">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>350</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_54">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>320</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1st Dose:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_55">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>290</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Unvaccinated:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="females_unvax">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>290</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="females_count">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>260</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="females_1">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>320</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+   </widget>
    <zorder>admin_display</zorder>
-   <zorder>admin_screen</zorder>
    <zorder>user_records</zorder>
    <zorder>admin_delete</zorder>
    <zorder>view_vax</zorder>
    <zorder>view_unvax</zorder>
+   <zorder>advanced_frame</zorder>
+   <zorder>admin_screen</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1006</width>
+     <width>960</width>
      <height>22</height>
     </rect>
    </property>

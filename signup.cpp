@@ -47,7 +47,6 @@ Signup::Signup(QWidget* parent)
     connect(ui->natID, &QLineEdit::editingFinished, this, &Signup::id_validate);
     connect(ui->password, &QLineEdit::editingFinished, this, &Signup::pass_validate);
     connect(ui->age, &QLineEdit::editingFinished, this, &Signup::age_validate);
-    connect(ui->governorate, &QLineEdit::editingFinished, this, &Signup::gov_validate);
 
 
 }
@@ -76,7 +75,7 @@ void Signup::signup_clicked() {
 
     string q_age = ui->age->text().toStdString();
 
-    QString q_governorate = ui->governorate->text();
+    QString q_governorate = ui->governorate->currentText();
     string governorate = q_governorate.toStdString();
 
     //make sure a box got checked before proceeding to not read from NULL
@@ -123,7 +122,12 @@ void Signup::signup_clicked() {
         qDebug() << "Vaccine is Required Field!";
     }
  
-
+    //validate, in case of pressing sign up without clicking (the edit finished won't be triggered so we manually vlaidate)
+    name_validate();
+    id_validate();
+    age_validate();
+    pass_validate();
+    gov_validate();
     
     //if everything is valid then create user
     if (id_valid && name_valid && age_valid && password_valid && gender_valid && vaccine_valid && governorate_valid) {
@@ -239,9 +243,9 @@ void Signup::age_validate() {
 
 void Signup::gov_validate() {
 
-    string governorate = ui->governorate->text().toStdString();
+    string governorate = ui->governorate->currentText().toStdString();;
   
-    if (governorate == "") {
+    if (governorate == "-") {
         governorate_valid = false;
         ui->gov_warn->setVisible(true);
         qDebug() << "Governorate Required Field!";

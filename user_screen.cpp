@@ -24,7 +24,6 @@ User_Screen::User_Screen(QWidget* parent)
     //set initial warning visibilities 
     ui->name_warn->setVisible(false);
     ui->age_warn->setVisible(false);
-    ui->gov_warn->setVisible(false);
    
 
     //buttons in user_frame
@@ -91,7 +90,7 @@ void User_Screen::edit_clicked() {
     //set text
     ui->edit_name->setText(QString::fromStdString(userHash[loggedInUserID].name));
     ui->edit_age->setText(QString::number(userHash[loggedInUserID].age));
-    ui->edit_gov->setText(QString::fromStdString(userHash[loggedInUserID].governorate));
+    ui->edit_gov->setCurrentText(QString::fromStdString(userHash[loggedInUserID].governorate));
 
     //set radio button values
     //gender
@@ -199,17 +198,6 @@ void User_Screen::display_update_clicked() {
     }
 
 
-    //governorate validate
-    string governorate = ui->edit_gov->text().toStdString();
-    if (governorate == "") {
-        valid = false;
-        ui->gov_warn->setVisible(true);
-        qDebug() << "Governorate Required Field!";
-
-    }
-    else {
-        ui->gov_warn->setVisible(false);
-    }
 
 
     //nothing has set valid to false, therfore it's true
@@ -218,7 +206,7 @@ void User_Screen::display_update_clicked() {
 
         userHash[loggedInUserID].name = ui->edit_name->text().toStdString();
         userHash[loggedInUserID].age = stoi(ui->edit_age->text().toStdString());
-        userHash[loggedInUserID].governorate = ui->edit_gov->text().toStdString();
+        userHash[loggedInUserID].governorate = ui->edit_gov->currentText().toStdString();
         userHash[loggedInUserID].gender = ui->genderButtonGroup->checkedButton()->objectName().toStdString();
         
         if (ui->doseButtonGroup->checkedButton()->objectName() == "edit_unvaccinated")

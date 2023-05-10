@@ -12,10 +12,18 @@ public:
 	~Admin_Screen();
 
 private:
+	//basic stat
 	double malesRatio, femalesRatio, unvaccinatedRatio,
 		firstdoseRatio, seconddoseRatio;
 
-	void Basic_statistics();
+	void basic_statistics();
+
+	//adv stat
+	int users_count, users_unvax, users_1, users_2;
+	int males_count, males_unvax, males_1, males_2;
+	int females_count, females_unvax, females_1, females_2;
+
+	void advanced_statistics();
 
 private slots:
 
@@ -23,6 +31,7 @@ private slots:
 	void records_clicked();
 	void vaccinated_clicked();
 	void unvaccinated_clicked();
+	void advanced_clicked();
 	void signout_clicked();
 
 	//user_records frame
@@ -45,6 +54,10 @@ private slots:
 
 	//view_unvax frame
 	void unvaccinated_back_clicked();
+
+	//advanced_frame
+	void advanced_back_clicked();
+	void advanced_filter_changed(); //if gov from combobox or age from spinbox changed
 
 private:
 	Ui::adminScreenClass* ui;
