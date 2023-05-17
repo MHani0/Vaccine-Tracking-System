@@ -42,7 +42,8 @@ User_Screen::User_Screen(QWidget* parent)
     //buttons in edit_frame
     connect(ui->edit_update, &QPushButton::clicked, this, &User_Screen::display_update_clicked);
     connect(ui->edit_cancel, &QPushButton::clicked, this, &User_Screen::display_cancel_clicked);
-
+    connect(ui->edit_age, &QLineEdit::returnPressed, this, &User_Screen::display_update_clicked);
+    connect(ui->edit_name, &QLineEdit::returnPressed, this, &User_Screen::display_update_clicked);
 }
 
 User_Screen::~User_Screen()

@@ -9,7 +9,10 @@ Login_Admin::Login_Admin(QWidget* parent)
 
     //set initial warning to invisible
     ui->password_warn->setVisible(false);
+    //ommiting password
+    ui->password->setEchoMode(QLineEdit::Password);
 
+    connect(ui->password, &QLineEdit::returnPressed, this, &Login_Admin::login_clicked);
     connect(ui->login, &QPushButton::clicked, this, &Login_Admin::login_clicked);
     connect(ui->back, &QPushButton::clicked, this, &Login_Admin::back_clicked);
 }

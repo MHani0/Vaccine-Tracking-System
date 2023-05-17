@@ -10,7 +10,10 @@ Login_User::Login_User(QWidget* parent)
 
     //make the warning initially invisible 
     ui->login_warn->setVisible(false);
+    //ommiting password
+    ui->password->setEchoMode(QLineEdit::Password);
     
+    connect(ui->password, &QLineEdit::returnPressed, this, &Login_User::login_clicked);
     connect(ui->login, &QPushButton::clicked, this, &Login_User::login_clicked);
     connect(ui->back, &QPushButton::clicked, this, &Login_User::back_clicked);
 }

@@ -30,6 +30,7 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 	//buttons in user_records
 	connect(ui->back_button, &QPushButton::clicked, this, &Admin_Screen::records_back_clicked);
 	connect(ui->search_button, &QPushButton::clicked, this, &Admin_Screen::search_clicked);
+	connect(ui->input_id, &QLineEdit::returnPressed, this, &Admin_Screen::search_clicked);
 	connect(ui->delete_record, &QPushButton::clicked, this, &Admin_Screen::delete_clicked);
 	connect(ui->view_record, &QPushButton::clicked, this, &Admin_Screen::view_clicked);
 
@@ -57,7 +58,7 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 
 	//buttons and events in advanced_frame
 	connect(ui->back_button_adv, &QPushButton::clicked, this, &Admin_Screen::advanced_back_clicked);
-	connect(ui->governorate_adv, SIGNAL(currentIndexChanged(int)), this, SLOT(advanced_filter_changed()));
+	connect(ui->governorate_adv, &QComboBox::currentIndexChanged, this, &Admin_Screen::advanced_filter_changed);
 	connect(ui->low_range, QOverload<int>::of(&QSpinBox::valueChanged), this, &Admin_Screen::advanced_filter_changed);
 	connect(ui->high_range, QOverload<int>::of(&QSpinBox::valueChanged), this, &Admin_Screen::advanced_filter_changed);
 }
@@ -152,12 +153,14 @@ void Admin_Screen::vaccinated_clicked() {
 		if (tmp != nullptr) {
 			QTableWidgetItem* natID = new QTableWidgetItem(QString::fromStdString(tmp->natID));
 			QTableWidgetItem* fullName = new QTableWidgetItem(QString::fromStdString(userHash[tmp->natID].name));
+			QTableWidgetItem* age = new QTableWidgetItem(QString::number(userHash[tmp->natID].age));
 			QTableWidgetItem* dose = new QTableWidgetItem(QString::number(userHash[tmp->natID].dose));
 			
 			ui->vax_table->insertRow(row);
 			ui->vax_table->setItem(row, 0, natID);
 			ui->vax_table->setItem(row, 1, fullName);
-			ui->vax_table->setItem(row, 2, dose);
+			ui->vax_table->setItem(row, 2, age);
+			ui->vax_table->setItem(row, 3, dose);
 		}
 		else {
 			break;
@@ -410,11 +413,7 @@ void Admin_Screen::advanced_filter_changed() {
 	ui->low_range->setMaximum(ui->high_range->value());
 	ui->high_range->setMinimum(ui->low_range->value());
 
-	advanced_statistics();
-
-	
-	
-
+	advanced_statistics();	
 }
 
 

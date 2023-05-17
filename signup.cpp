@@ -5,9 +5,6 @@
 using namespace std;
 
 
-
-
-
 Signup::Signup(QWidget* parent)
     : QMainWindow(parent), ui(new Ui::SignupClass)
 {
@@ -37,17 +34,25 @@ Signup::Signup(QWidget* parent)
 
     //make it initially enabled
     ui->signup->setEnabled(true);
-    
+    //ommiting password
+    ui->password->setEchoMode(QLineEdit::Password);
+
     //buttons
     connect(ui->signup, &QPushButton::clicked, this, &Signup::signup_clicked);
     connect(ui->back, &QPushButton::clicked, this, &Signup::back_clicked);
 
     //text loses focus
     connect(ui->name, &QLineEdit::editingFinished, this, &Signup::name_validate);
-    connect(ui->natID, &QLineEdit::editingFinished, this, &Signup::id_validate);
-    connect(ui->password, &QLineEdit::editingFinished, this, &Signup::pass_validate);
-    connect(ui->age, &QLineEdit::editingFinished, this, &Signup::age_validate);
+    connect(ui->name, &QLineEdit::returnPressed, this, &Signup::signup_clicked);
 
+    connect(ui->natID, &QLineEdit::editingFinished, this, &Signup::id_validate);
+    connect(ui->natID, &QLineEdit::returnPressed, this, &Signup::signup_clicked);
+
+    connect(ui->password, &QLineEdit::editingFinished, this, &Signup::pass_validate);
+    connect(ui->password, &QLineEdit::returnPressed, this, &Signup::signup_clicked);
+
+    connect(ui->age, &QLineEdit::editingFinished, this, &Signup::age_validate);
+    connect(ui->age, &QLineEdit::returnPressed, this, &Signup::signup_clicked);
 
 }
 

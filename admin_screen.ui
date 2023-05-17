@@ -1091,9 +1091,9 @@
     <widget class="QTableWidget" name="vax_table">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>200</x>
        <y>90</y>
-       <width>451</width>
+       <width>601</width>
        <height>361</height>
       </rect>
      </property>
@@ -1140,7 +1140,7 @@
       <number>0</number>
      </property>
      <property name="columnCount">
-      <number>3</number>
+      <number>4</number>
      </property>
      <attribute name="horizontalHeaderVisible">
       <bool>true</bool>
@@ -1174,6 +1174,17 @@
      <column>
       <property name="text">
        <string>Full Name</string>
+      </property>
+      <property name="font">
+       <font>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Age</string>
       </property>
       <property name="font">
        <font>
