@@ -266,12 +266,12 @@
      <rect>
       <x>600</x>
       <y>110</y>
-      <width>131</width>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>[Invalid or duplicate ID!]</string>
+     <string>[ID should be 14 digits and unique!]</string>
     </property>
     <property name="textFormat">
      <enum>Qt::PlainText</enum>
@@ -285,12 +285,12 @@
      <rect>
       <x>600</x>
       <y>160</y>
-      <width>121</width>
+      <width>231</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>[Password too short!]</string>
+     <string>[Password should be at least 8 characters!]</string>
     </property>
     <property name="textFormat">
      <enum>Qt::PlainText</enum>
