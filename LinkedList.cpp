@@ -139,6 +139,17 @@ void LinkedList::display() {
 	
 }
 
+//clear all elements and reset head and tail and count
+void LinkedList::clear() {
+	Node* current = head;
+	while (current != NULL) {
+		Node* next = current->next;
+		delete current;
+		current = next;
+	}
+	head = tail = 0;
+	count = 0;
+}
 
 LinkedList::~LinkedList() {
 	Node* current = head;

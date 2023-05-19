@@ -38,13 +38,18 @@ private slots:
 	void search_clicked();
 	void view_clicked();
 	void delete_clicked();
+	void delete_all_clicked();
 	void records_back_clicked();
 	void table_record_clicked(int,int);
 	void selection_changed();
 
 	//admin_delete frame
-	void yes_clicked();
-	void no_clicked();
+	void delete_no_clicked();
+	void delete_yes_clicked();
+
+	//admin delte all frame
+	void delete_all_no_clicked();
+	void delete_all_yes_clicked();
 
 	//admin_display frame
 	void display_back_clicked();

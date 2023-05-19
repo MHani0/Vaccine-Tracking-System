@@ -12,9 +12,11 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 	ui->user_records->setVisible(false);
 	ui->admin_display->setVisible(false);
 	ui->admin_delete->setVisible(false);
+	ui->admin_delete_all->setVisible(false);
 	ui->view_vax->setVisible(false);
 	ui->view_unvax->setVisible(false);
 	ui->advanced_frame->setVisible(false);
+
 
 	//set basic statistics
 	basic_statistics();
@@ -33,6 +35,7 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 	connect(ui->input_id, &QLineEdit::returnPressed, this, &Admin_Screen::search_clicked);
 	connect(ui->delete_record, &QPushButton::clicked, this, &Admin_Screen::delete_clicked);
 	connect(ui->view_record, &QPushButton::clicked, this, &Admin_Screen::view_clicked);
+	connect(ui->delete_all, &QPushButton::clicked, this, &Admin_Screen::delete_all_clicked);
 
 	//table initialization & connection and setting up selection
 	connect(ui->record_table, &QTableWidget::cellClicked, this, &Admin_Screen::table_record_clicked);
@@ -40,9 +43,12 @@ Admin_Screen::Admin_Screen(QWidget *parent)
 	ui->record_table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	
 	//buttons in admin delete
-	connect(ui->yes_delete, &QPushButton::clicked, this, &Admin_Screen::yes_clicked);
-	connect(ui->no_delete, &QPushButton::clicked, this, &Admin_Screen::no_clicked);
+	connect(ui->yes_delete, &QPushButton::clicked, this, &Admin_Screen::delete_yes_clicked);
+	connect(ui->no_delete, &QPushButton::clicked, this, &Admin_Screen::delete_no_clicked);
 
+	//buttons in admin delete all
+	connect(ui->yes_delete_all, &QPushButton::clicked, this, &Admin_Screen::delete_all_yes_clicked);
+	connect(ui->no_delete_all, &QPushButton::clicked, this, &Admin_Screen::delete_all_no_clicked);
 
 	//buttons in admin_display
 	connect(ui->back_display, &QPushButton::clicked, this, &Admin_Screen::display_back_clicked);
@@ -115,6 +121,11 @@ void Admin_Screen::records_clicked() {
 
 	ui->view_record->setVisible(false);
 	ui->delete_record->setVisible(false);
+
+	//if no users then make the delete all invisible
+	if (userHash.size() == 0) ui->delete_all->setVisible(false);
+	else ui->delete_all->setVisible(true);
+
 
 	ui->input_id->setText(""); //resetting search bar
 	ui->dose_filter->setCurrentIndex(0); //resseting dose
@@ -354,6 +365,12 @@ void Admin_Screen::delete_clicked() {
 	}
 
 }
+
+void Admin_Screen::delete_all_clicked() {
+		ui->user_records->setVisible(false);
+		ui->admin_delete_all->setVisible(true);
+}
+
 void Admin_Screen::records_back_clicked() {
 	chosenUserID = "";
 
@@ -365,7 +382,7 @@ void Admin_Screen::records_back_clicked() {
 
 
 //admn_delete functions
-void Admin_Screen::yes_clicked() {
+void Admin_Screen::delete_yes_clicked() {
 
 	deleteUser(chosenUserID);
 	chosenUserID = "";
@@ -376,11 +393,37 @@ void Admin_Screen::yes_clicked() {
 	ui->admin_delete->setVisible(false);
 	ui->user_records->setVisible(true);
 }
-void Admin_Screen::no_clicked() {
+void Admin_Screen::delete_no_clicked() {
 	chosenUserID = "";
 	ui->admin_delete->setVisible(false);
 	ui->user_records->setVisible(true);
 }
+
+
+//admin_delete_all functions
+void Admin_Screen::delete_all_yes_clicked() {
+
+	//delete all from all data structes 
+	userHash.clear();
+	hashKeysOrdered.clear();
+	while (!not_vaccinated.empty()) {
+		not_vaccinated.pop();
+	}
+	vaccinated.clear();
+
+	qDebug() << "all Users Deleted";
+
+	records_clicked();
+
+	ui->admin_delete_all->setVisible(false);
+	ui->user_records->setVisible(true);
+}
+
+void Admin_Screen::delete_all_no_clicked() {
+	ui->admin_delete_all->setVisible(false);
+	ui->user_records->setVisible(true);
+}
+
 
 //admin_display functions
 void Admin_Screen::display_back_clicked() {

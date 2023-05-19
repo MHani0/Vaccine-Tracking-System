@@ -200,7 +200,6 @@ void User_Screen::display_update_clicked() {
 
 
 
-
     //nothing has set valid to false, therfore it's true
     if (valid) {
 
@@ -210,14 +209,47 @@ void User_Screen::display_update_clicked() {
         userHash[loggedInUserID].governorate = ui->edit_gov->currentText().toStdString();
         userHash[loggedInUserID].gender = ui->genderButtonGroup->checkedButton()->objectName().toStdString();
         
-        if (ui->doseButtonGroup->checkedButton()->objectName() == "edit_unvaccinated")
+        if (ui->doseButtonGroup->checkedButton()->objectName() == "edit_unvaccinated") {
+            //if he either had one one or two dose and become zero dose, remove him from linked list and place him in queue
+            if (userHash[loggedInUserID].dose > 0) {
+                vaccinated.deleteAt(loggedInUserID); //delete from linked list
+                not_vaccinated.push(loggedInUserID); //insert in queue
+            }
+
+            //if he turned from 0 to 0 then previous if wasn't executed and he is still in queue
             userHash[loggedInUserID].dose = 0;
-        else if (ui->doseButtonGroup->checkedButton()->objectName() == "edit_vaccinated_1")
-            userHash[loggedInUserID].dose = 1;
-        else if (ui->doseButtonGroup->checkedButton()->objectName() == "edit_vaccinated_2")
-            userHash[loggedInUserID].dose = 2;
+        }
 
+        else {
+   
+            //if he had zero dose and became non zero dose, then remove him from queue and place him in linked list
+            if (userHash[loggedInUserID].dose == 0) {
+                //delete from queue
+                queue <string> copyqueue;
+                while (!not_vaccinated.empty())
+                {
+                    if (loggedInUserID != not_vaccinated.front())
+                        copyqueue.push(not_vaccinated.front());
+                    not_vaccinated.pop();
 
+                }
+                while (!copyqueue.empty())
+                {
+                    not_vaccinated.push(copyqueue.front());
+                    copyqueue.pop();
+                }
+
+                //insert in linked list
+                vaccinated.insert(loggedInUserID, userHash);
+            }
+
+            //set the value, if he turned from 1 to 2 or from 2 to 1 then previous if isn't executed
+            if (ui->doseButtonGroup->checkedButton()->objectName() == "edit_vaccinated_1")
+                userHash[loggedInUserID].dose = 1;
+            else if (ui->doseButtonGroup->checkedButton()->objectName() == "edit_vaccinated_2")
+                userHash[loggedInUserID].dose = 2;
+        
+        }
 
         ui->edit_frame->setVisible(false);
         ui->user_frame->setVisible(true);

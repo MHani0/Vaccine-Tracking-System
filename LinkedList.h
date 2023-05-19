@@ -34,6 +34,7 @@ public:
 	void insert(string, unordered_map<string, User>&);
 	void deleteAt(string);
 	void display();
+	void clear();
 	~LinkedList();
 
 

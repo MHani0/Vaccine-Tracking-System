@@ -739,6 +739,19 @@
       <string>Back</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="delete_all">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>510</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Delete All Users</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="admin_delete">
     <property name="enabled">
@@ -2020,13 +2033,87 @@
      </property>
     </widget>
    </widget>
+   <widget class="QFrame" name="admin_delete_all">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>960</width>
+      <height>570</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="yes_delete_all">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>290</y>
+       <width>140</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Yes</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_24">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>150</y>
+       <width>571</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Are you sure you want to delete all accounts?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="no_delete_all">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>290</y>
+       <width>140</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>No</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>admin_delete_all</zorder>
    <zorder>admin_display</zorder>
-   <zorder>user_records</zorder>
    <zorder>admin_delete</zorder>
    <zorder>view_vax</zorder>
    <zorder>view_unvax</zorder>
    <zorder>advanced_frame</zorder>
    <zorder>admin_screen</zorder>
+   <zorder>user_records</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
